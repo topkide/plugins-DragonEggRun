@@ -1,0 +1,87 @@
+# ============ DragonEggRun - 드래곤알 들고 도망가기 ============
+
+# 시작 시 알 지급 방식: random(준비시간 후 랜덤 1명) / map(맵에 알 생성, 먼저 줍기)
+mode: random
+
+# 시작(/드래곤알 시작) 후 알이 등장하기까지의 준비(흩어지는) 시간 (초)
+prep-seconds: 60
+
+# 알 등장 후 게임 진행 시간 (초). 0이 되면 그때 알을 든 사람이 승리
+game-seconds: 300
+
+# mode=map 일 때 알이 생성될 위치 (/드래곤알 위치설정 으로 자동 저장)
+map-egg:
+  world: ""
+  x: 0
+  y: 0
+  z: 0
+
+steal:
+  freeze-seconds: 10     # 뺏긴 사람이 얼어붙는 시간
+  grace-seconds: 2       # 알 획득 직후 다시 뺏기지 않는 보호 시간 (핑퐁 방지)
+
+display:
+  scale: 0.5             # 머리 위 알 크기
+  y-offset: 0.7          # 눈높이 기준 추가 높이
+
+# 술래(알 소지자) 투명/노출
+stealth:
+  reveal-radius: 5.0     # 이 거리 안의 상대에게만 술래가 보임 (그 외엔 투명)
+  camp-seconds: 3        # 이 시간 이상 제자리에 있으면 투명 해제 + 발광
+
+# 알을 든 사람이 남기는 발자국
+footprint:
+  enabled: true
+  night-only: false      # false=낮/밤 항상 표시 / true=밤(아래 night 구간)에만
+  step-distance: 0.6     # 이만큼 움직일 때마다 발자국 1개
+  lifetime-ticks: 120    # 발자국 잔류 시간 (20틱=1초, 120=6초)
+  size: 0.9
+  view-distance: 48
+  # 참가자별 발자국 색 (참가 순서대로 배정 → 누가 들고 있는지 색으로 구분)
+  colors:
+    - "#E74C3C"  # 빨강
+    - "#3498DB"  # 파랑
+    - "#2ECC71"  # 초록
+    - "#F1C40F"  # 노랑
+    - "#9B59B6"  # 보라
+    - "#E67E22"  # 주황
+    - "#1ABC9C"  # 청록
+    - "#FF6FB5"  # 분홍
+    - "#FFFFFF"  # 흰색
+    - "#34495E"  # 남색
+
+# night-only=true 일 때 발자국이 생성되는 밤 시간대 (0~24000틱, 13000~23000 = 밤)
+night:
+  start: 13000
+  end: 23000
+
+messages:
+  lobby-open: "&a[드래곤알] 참가 모집 시작! &e/드래곤알 참가 &a로 참여하세요."
+  joined: "&a{player} 님이 참가했습니다. (현재 {count}명)"
+  left: "&7{player} 님이 퇴장했습니다."
+  already-joined: "&7이미 참가 중입니다."
+  not-joined: "&7참가 중이 아닙니다."
+  not-in-lobby: "&c지금은 참가할 수 있는 단계가 아닙니다."
+  not-participant: "&c게임 참가자만 할 수 있습니다."
+  need-more: "&c참가자가 2명 이상이어야 시작할 수 있습니다."
+  no-online: "&c온라인 참가자가 없어 알을 지급할 수 없습니다."
+  no-map-loc: "&c맵 알 위치가 설정되지 않았습니다. /드래곤알 위치설정 먼저 하세요."
+  map-loc-set: "&a이 위치를 맵 알 생성 지점으로 저장했습니다."
+  mode-set: "&a지급 방식을 '{mode}' 으로 설정했습니다."
+  prep-set: "&a준비 시간을 {sec}초로 설정했습니다. (다음 라운드부터 적용)"
+  game-set: "&a진행 시간을 {sec}초로 설정했습니다. (다음 라운드부터 적용)"
+  bad-number: "&c올바른 숫자(초)를 입력하세요. 예) /드래곤알 진행시간 300"
+  prep-start: "&e게임 시작! {sec}초 안에 흩어지세요!"
+  prep-count: "&e알 등장까지 {sec}초..."
+  give-random: "&d&l[드래곤알] &f{player} 님에게 드래곤알이 주어졌습니다! 도망치세요!"
+  map-spawn: "&d&l[드래곤알] &f드래곤알이 맵에 나타났습니다! 먼저 줍는 사람이 임자!"
+  grabbed: "&e{player} 님이 드래곤알을 주웠습니다!"
+  running-info: "&e게임 진행 시간 {sec}초! 종료될 때 알을 든 사람이 승리합니다!"
+  game-count: "&e종료까지 {sec}초..."
+  win-holder: "&6&l[승리] &f{player} 님이 드래곤알을 끝까지 지켜 승리했습니다!"
+  win-none: "&7시간 종료! 아무도 드래곤알을 들고 있지 않아 무승부입니다."
+  stolen: "&c&l[강탈] &f{thief} 님이 {victim} 님의 드래곤알을 빼앗았습니다!"
+  frozen: "&b❄ 빼앗겨서 {sec}초간 얼어붙었습니다!"
+  freeze-actionbar: "&b❄ 빙결 {sec}초"
+  dropped: "&7드래곤알이 떨어졌습니다! 주우세요!"
+  stopped: "&7드래곤알 게임이 종료되었습니다."

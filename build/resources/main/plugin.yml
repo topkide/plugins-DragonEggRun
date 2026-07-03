@@ -1,0 +1,17 @@
+name: 'DragonEggRun'
+version: '1.0.0'
+main: 'com.dotorimaru.dragoneggrun.DragonEggRunPlugin'
+api-version: '1.21'
+author: 도토리마을
+description: 드래곤알 들고 도망가기 (머리 위 알 표시 + 우클릭 강탈 + 빙결)
+
+commands:
+  드래곤알:
+    description: 드래곤알 들고 도망가기 게임
+    usage: /드래곤알 <모집|참가|퇴장|인원|모드|위치설정|준비시간|진행시간|시작|중지|새로고침>
+    aliases: [드래곤, eggrun]
+
+permissions:
+  eggrun.admin:
+    description: 드래곤알 게임 관리 권한
+    default: op
